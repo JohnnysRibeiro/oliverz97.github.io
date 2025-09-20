@@ -33,13 +33,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
   end
 
   create_table "characters", force: :cascade do |t|
-    t.string "label"
     t.string "name"
-    t.string "sex"
-    t.string "origin"
+    t.integer "sex"
+    t.integer "origin"
     t.string "hair_color"
     t.string "age"
-    t.string "age_group"
+    t.integer "age_group"
     t.integer "height"
     t.string "eye_color"
     t.integer "anime_id"
@@ -53,6 +52,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.integer "genre_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

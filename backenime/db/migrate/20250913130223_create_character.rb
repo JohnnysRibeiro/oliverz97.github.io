@@ -3,11 +3,11 @@ class CreateCharacter < ActiveRecord::Migration[8.0]
     create_table :characters do |t|
 :label
       t.string :name
-      t.string :sex
-      t.string :origin
+      t.integer :sex
+      t.integer :origin
       t.string :hair_color
       t.string :age
-      t.string :age_group
+      t.integer :age_group
       t.integer :height
       t.string :eye_color
       t.integer :anime_id
