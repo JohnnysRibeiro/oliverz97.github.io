@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_20_054357) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,11 +34,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.integer "sex"
-    t.integer "origin"
+    t.string "sex"
+    t.string "origin"
     t.string "hair_color"
     t.string "age"
-    t.integer "age_group"
+    t.string "age_group"
     t.integer "height"
     t.string "eye_color"
     t.integer "anime_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.integer "genre_type"
+    t.string "genre_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,5 +68,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_060007) do
     t.integer "anime_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "avatar_url"
+    t.string "background_color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 end

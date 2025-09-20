@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount Rswag::Ui::Engine => "/api-docs"
 
   mount V1::ApiGrape => "api", as: :v1_api
