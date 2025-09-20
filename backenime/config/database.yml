@@ -20,6 +20,18 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
+
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: postgres
+#   url: <%= ENV.fetch("DATABASE_URL") %>
+#   host: db.HASH.supabase.co
+#   port: 5432
+#   database: postgres
+#   sslmode: require
+
 development:
   <<: *default
   database: backenime_development
