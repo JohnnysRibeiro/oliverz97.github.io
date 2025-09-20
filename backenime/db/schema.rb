@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_20_054357) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_20_061547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -57,6 +57,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_20_054357) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "game_mode"
+    t.integer "points"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "streaks", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "game_mode"
+    t.integer "days"
+    t.datetime "starts_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -78,6 +96,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_20_054357) do
     t.datetime "remember_created_at"
     t.string "avatar_url"
     t.string "background_color"
+    t.string "authentication_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -29,7 +29,7 @@ module V1
         requires :authentication_token, type: String, desc: "Authentication Token - can be fetched by login action"
       end
       get do
-        authenticate!
+        admin_authenticate!
         @genres = Genre.all
         present @genres, with: ::Entities::GenreResponse
       end
@@ -48,7 +48,7 @@ module V1
         requires :id, type: Integer, desc: "Genre ID"
       end
       get ":id" do
-        authenticate!
+        admin_authenticate!
         find_genre
         present @genre, with: ::Entities::GenreResponse
       end
@@ -67,7 +67,7 @@ module V1
         requires :name, type: String, desc: "Genre name"
       end
       post do
-        authenticate!
+        admin_authenticate!
         @genre = Genre.new(genre_params)
         if @genre.save
           present @genre, with: ::Entities::GenreResponse
@@ -92,7 +92,7 @@ module V1
         optional :name, type: String, desc: "Genre name"
       end
       put ":id" do
-        authenticate!
+        admin_authenticate!
         find_genre
         if @genre.update(genre_params)
           present @genre, with: ::Entities::GenreResponse
@@ -114,7 +114,7 @@ module V1
         requires :id, type: Integer, desc: "Genre ID"
       end
       delete ":id" do
-        authenticate!
+        admin_authenticate!
         find_genre
         if @genre.destroy
           { success: true, message: "Genre successfully deleted" }

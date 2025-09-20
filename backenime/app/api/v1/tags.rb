@@ -29,7 +29,7 @@ module V1
         requires :authentication_token, type: String, desc: "Authentication Token - can be fetched by login action"
       end
       get do
-        authenticate!
+        admin_authenticate!
         @tags = Tag.all
         present @tags, with: Entities::TagResponse
       end
@@ -48,7 +48,7 @@ module V1
         requires :id, type: Integer, desc: "Tag ID"
       end
       get ":id" do
-        authenticate!
+        admin_authenticate!
         find_tag
         present @tag, with: Entities::TagResponse
       end
@@ -67,7 +67,7 @@ module V1
         requires :name, type: String, desc: "Tag name"
       end
       post do
-        authenticate!
+        admin_authenticate!
         @tag = Tag.new(tag_params)
         if @tag.save
           present @tag, with: Entities::TagResponse
@@ -92,7 +92,7 @@ module V1
         optional :name, type: String, desc: "Tag name"
       end
       put ":id" do
-        authenticate!
+        admin_authenticate!
         find_tag
         if @tag.update(tag_params)
           present @tag, with: Entities::TagResponse
@@ -114,7 +114,7 @@ module V1
         requires :id, type: Integer, desc: "Tag ID"
       end
       delete ":id" do
-        authenticate!
+        admin_authenticate!
         find_tag
         if @tag.destroy
           { success: true, message: "Tag successfully deleted" }

@@ -44,7 +44,7 @@ module V1
         requires :authentication_token, type: String, desc: "Authentication Token - can be fetched by login action"
       end
       get do
-        authenticate!
+        admin_authenticate!
         @characters = Character.all
         present @characters, with: ::Entities::CharacterResponse
       end
@@ -63,7 +63,7 @@ module V1
         requires :id, type: Integer, desc: "Character ID"
       end
       get ":id" do
-        authenticate!
+        admin_authenticate!
         find_character
         present @character, with: ::Entities::CharacterResponse
       end
@@ -95,7 +95,7 @@ module V1
         requires :version, type: "Integer", desc: "Version"
       end
       post do
-        authenticate!
+        admin_authenticate!
         @character = Character.new(character_params)
         if @character.save
           present @character, with: ::Entities::CharacterResponse
@@ -133,7 +133,7 @@ module V1
         requires :version, type: "Integer", desc: "Version"
       end
       put ":id" do
-        authenticate!
+        admin_authenticate!
         find_character
         if @character.update(character_params)
           present @character, with: ::Entities::CharacterResponse
@@ -155,7 +155,7 @@ module V1
         requires :id, type: Integer, desc: "Character ID"
       end
       delete ":id" do
-        authenticate!
+        admin_authenticate!
         find_character
         if @character.destroy
           { success: true, message: "Character successfully deleted" }

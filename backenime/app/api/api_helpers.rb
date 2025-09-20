@@ -2,7 +2,7 @@
 
 # rubocop:disable Metrics/ModuleLength
 module ApiHelpers
-  def authenticate!
+  def admin_authenticate!
     admin_user = AdminUser.find_by(login: params[:login], authentication_token: params[:authentication_token])
     byebug
     error!({ error: "Unauthorized" }, 401) unless admin_user.present?

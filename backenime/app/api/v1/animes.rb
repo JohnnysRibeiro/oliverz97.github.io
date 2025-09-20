@@ -37,7 +37,7 @@ module V1
         requires :authentication_token, type: String, desc: "Authentication Token - can be fetched by login action"
       end
       get do
-        authenticate!
+        admin_authenticate!
         @animes = Anime.all
         present @animes, with: Entities::AnimeResponse
       end
@@ -56,7 +56,7 @@ module V1
         requires :id, type: Integer, desc: "Anime ID"
       end
       get ":id" do
-        authenticate!
+        admin_authenticate!
         find_anime
         present @anime, with: Entities::AnimeResponse
       end
@@ -79,7 +79,7 @@ module V1
         optional :second_subgenre_id, type: Integer, desc: "Second SubGenre ID"
       end
       post do
-        authenticate!
+        admin_authenticate!
         @anime = Anime.new(anime_params)
         if @anime.save
           present @anime, with: Entities::AnimeResponse
@@ -107,7 +107,7 @@ module V1
         optional :second_subgenre_id, type: Integer, desc: "Second SubGenre ID"
       end
       put ":id" do
-        authenticate!
+        admin_authenticate!
         find_anime
         if @anime.update(anime_params)
           present @anime, with: Entities::AnimeResponse
@@ -129,7 +129,7 @@ module V1
         requires :id, type: Integer, desc: "Anime ID"
       end
       delete ":id" do
-        authenticate!
+        admin_authenticate!
         find_anime
         if @anime.destroy
           { success: true, message: "Anime successfully deleted" }
@@ -152,7 +152,7 @@ module V1
         requires :tag_id, type: Integer, desc: "Tag ID"
       end
       post ":id/assign_tag" do
-        authenticate!
+        admin_authenticate!
         find_anime
         find_tag
         tags_anime = TagsAnime.new(tag_id: @tag.id, anime_id: @anime.id)

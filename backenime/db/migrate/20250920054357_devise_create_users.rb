@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[8.0]
 
       t.string :avatar_url
       t.string :background_color
+      t.string :authentication_token
       t.timestamps null: false
     end
 

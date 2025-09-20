@@ -48,4 +48,13 @@ class Character < ApplicationRecord
     age_71_99: "71-99",
     age_100_plus: "100+"
   }, _prefix: true
+
+  enum difficulty: {
+    a: "A",
+    b: "B",
+    c: "C",
+    d: "D",
+    e: "E",
+    v: "V"
+  }, _prefix: true
 end
