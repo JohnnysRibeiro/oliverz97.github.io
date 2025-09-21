@@ -16,7 +16,7 @@ module Entities
     expose :birthday, documentation: { type: "Datetime", desc: "Character birthday" }
     expose :difficulty, documentation: { type: "String", desc: "Character difficulty" }
     expose :editorial_staff_hint, documentation: { type: "String", desc: "Editorial Staff Hint" }
-    expose :version, documentation: { type: "Integer", desc: "Version" }
+    expose :version, documentation: { type: "String", desc: "Version" }
     expose :created_at, documentation: { type: "Datetime", desc: "Created at" }
     expose :updated_at, documentation: { type: "DateTime", desc: "Updated at" }
   end

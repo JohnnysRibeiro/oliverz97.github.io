@@ -11,26 +11,25 @@
 #
 # Configure Using Gemfile
 # gem "pg"
-#
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-
-
+# #
 # default: &default
 #   adapter: postgresql
 #   encoding: unicode
+#   # For details on connection pooling, see Rails configuration guide
+#   # https://guides.rubyonrails.org/configuring.html#database-pooling
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: postgres
-#   url: <%= ENV.fetch("DATABASE_URL") %>
-#   host: db.HASH.supabase.co
-#   port: 5432
-#   database: postgres
-#   sslmode: require
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  url: <%= ENV.fetch("DATABASE_URL") %>
+  host: db.HASH.supabase.co
+  port: 5432
+  database: postgres
+  sslmode: require
 
 development:
   <<: *default

@@ -47,19 +47,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_20_061547) do
   end
 
   create_table "characters", force: :cascade do |t|
+    t.string "label"
     t.string "name"
     t.string "sex"
     t.string "origin"
     t.string "hair_color"
-    t.string "age"
+    t.integer "age"
     t.string "age_group"
     t.integer "height"
     t.string "eye_color"
     t.integer "anime_id"
-    t.datetime "birthday"
+    t.string "birthday"
     t.string "difficulty"
-    t.string "editorial_staff_hint"
-    t.integer "version"
+    t.string "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
